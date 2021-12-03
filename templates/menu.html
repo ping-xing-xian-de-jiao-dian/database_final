@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>菜单</title>
+    <style>
+        td, th {
+    font-family:monospace;
+    font-size: 18px;
+    white-space: nowrap;
+    width: 70px;
+    height: 35px;
+    text-align: center;
+}
+body{
+    margin: 0px;s
+    padding: 0px;
+}
+#bg{
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: -999;
+    position: absolute;
+}
+/* 普通蓝色字体 */
+a.myfont{
+    font-family:monospace;
+    font-size:19px;
+    font-style: normal;
+    font-weight: 600;
+    color: rgb(83, 92, 144);
+    text-decoration: none
+}
+/* 强调文字（红色） */
+.myfontStress{
+    font-family:monospace;
+    font-size:19px;
+    font-style: normal;
+    font-weight: 600;
+    color: rgb(255, 62, 62);
+    text-decoration: none
+}
+/* 按钮样式 */
+.buttonStyle{
+    font-family:monospace;
+    font-size:22px;
+    font-style: normal;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+}
+    </style>
+</head>
+
+
+<body>
+<img id="bg" src="../static/pictures/order.png"/>
+
+<div style="HEIGHT: 0%; POSITION: absolute; WIDTH: 100%">
+<form style="margin-left:58%; margin-right:0%; margin-top:2%;">
+<input type="button" value="清空"
+       onclick="window.location.href='/meReset'" class="buttonStyle">
+<input type="button" value="加一份快餐"
+       onclick="window.location.href='/meFastAdd'" class="buttonStyle">
+<input type="button" value="折扣商品"
+   onclick="window.location.href='/meDis'" class="buttonStyle">
+<!--<input type="button" value="更新价格"-->
+   <!--onclick="window.location.href='/meUpd'" class="buttonStyle">-->
+<input type="button" value="老板，加菜！"
+   onclick="window.location.href='/meAddForm'" class="buttonStyle">
+</form>
+<table id="myTable" width=40% border="6"
+       style="background:#fff3c2; border-color:#ccebff; margin-left:55%; margin-right:70% ;margin-top:3%">
+    <tr>
+        {% for col in me_cols %}
+        <th>{{col}}</th>
+        {% endfor %}
+        <!--<th>+1</th>-->
+        <!--<th>-1</th>-->
+        <th>删除</th>
+        <th>修改</th>
+    </tr>
+    {% for row in me_res %}
+    <tr>
+        {% for element in row %}
+        <td>{{element}}</td>
+        {% endfor %}
+        <!--<td><input type="button" value="+1" onclick="plus({{row[0]}})"-->
+                   <!--style="color:white;background-color:rgb(152,163,226);"/></td>-->
+        <!--<td><input type="button" value="-1" onclick="minus({{row[0]}})"-->
+                   <!--style="color:white;background-color:rgb(152,163,226);"/></td>-->
+        <td><a onclick="return confirm('真的要删除吗？')"
+               href="/meDel?name={{row[0]}}" methods="post"
+               class="myfontStress">删除</a></td>
+        <td><a href="/meModForm/{{row[0]}}" methods="post"
+               class="myfont">修改</a></td>
+    </tr>
+    {% endfor %}
+    <tr><td></td><td></td><td></td>
+    <td>总价：</td>
+    <td>{{sum}}</td></tr>
+</table>
+</div>
+
+
+<div style="HEIGHT: 0%; POSITION: absolute; WIDTH: 100%">
+<form action="/menuSel" method="post"
+      style="margin-left:10%; margin-right:50%; margin-top:2%;">
+    <input type="text" name="select" placeholder="按菜名查询" class="buttonStyle">
+    <input type="submit" value="查询" class="buttonStyle">
+    <input type="button" value="增加菜名"
+           onclick="window.location.href='/menuAddForm'" class="buttonStyle">
+</form>
+<table id="myTable" width=50% border="6"
+       style="background:#fff3c2; border-color:#ccebff; margin-left:2%; margin-right:70% ;margin-top:3%">
+    <tr>
+        {% for col in cols %}
+        <th>{{col}}</th>
+        {% endfor %}
+        <!--<th>份数</th>-->
+        <!--<th>+1</th>-->
+        <!--<th>-1</th>-->
+        <th>删除</th>
+        <th>修改</th>
+    </tr>
+    {% for row in res %}
+    <tr>
+        {% for element in row %}
+        <td>{{element}}</td>
+        {% endfor %}
+        <!--<td><input type="text" id="{{row[0]}}" value="0"-->
+                   <!--style="width: 20px;background:#fff3c2;border:0px"/></td>-->
+        <!--<td><input type="button" value="+1" onclick="plus({{row[0]}})"-->
+                   <!--style="color:white;background-color:rgb(152,163,226);"/></td>-->
+        <!--<td><input type="button" value="-1" onclick="minus({{row[0]}})"-->
+                   <!--style="color:white;background-color:rgb(152,163,226);"/></td>-->
+        <td><a onclick="return confirm('真的要删除吗？')"
+               href="/menuDel?name={{row[0]}}" methods="post"
+               class="myfontStress">删除</a></td>
+        <td><a href="/menuModForm/{{row[0]}}" methods="post"
+               class="myfont">修改</a></td>
+    </tr>
+    {% endfor %}
+    <!--<td>总价：</td>-->
+    <!--<td><input type="text" id="totPrice" value="0"-->
+               <!--style="width: 100%;background:#fff3c2;border:0px"></td></tr>-->
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <style type="text/css">
+        /* 背景 */
+        body{
+        margin: 0px;
+        padding: 0px;
+        }
+        #bg{
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            z-index: -999;
+            position: absolute;
+        }
+
+        /* 艺术字图片 */
+        #art{
+            width: 35%;
+            height: 25%;
+            top: 10%;
+            left: 60%;
+            position: absolute;
+        }
+
+        /* 字体 */
+        form.myfont{
+            font-family:monospace;
+            font-size:25px;
+            font-style: normal;
+            font-weight: 600;
+            color:rgb(0, 0, 0);
+        }
+    </style>
+</head>
+
+<body>
+
+<img id="bg" src="../static/pictures/背景.gif"/>
+<img id="art" src="../static/pictures/欢迎来到.png"/>
+
+<h2 style="text-align:right">
+    <pre style="left: 70%; position: absolute; top: 25%;" class="myfont">
+        登录
+    </pre>
+</h2>
+
+<h2 style="z-index: 999;">
+    <pre style="font-size: 25px;left: 52%; position: absolute; top: 80%;font-style: oblique;color:teal;font-size: 15px;">
+        <MARQUEE behavior=alternate width=100%>
+          </MARQUEE>
+          <MARQUEE direction=left>
+            计划好的事情，不一定都会发生；时间却像预期的那样，一点点溜走了；只有等待，是那样的遥遥无期。所以，不要再等待着看到这句话第二遍了，行动起来吧。
+          </MARQUEE><P>
+    </pre>
+</h2>
+
+
+<form action="http://localhost:5000/menu" method="post"
+      style="left: 71%; position: absolute; top: 38%;" class="myfont">
+    账号:<br>
+    <input type="text" name="nm" style="width: 170px;height: 30px;">
+    <br><br>
+    密码:<br>
+    <input type="text" name="pw" style="width: 170px;height: 30px;">
+    <br><br>
+    <input type="submit" value="登录" style="left:36%;top:108%;position: absolute;z-index: 999;height: 30px;width: 50px;font-family:Arial, Helvetica, sans-serif;color:white;background-color:rgb(76, 202, 59);" />
+
+</form>
+
+</body>
+</html>
