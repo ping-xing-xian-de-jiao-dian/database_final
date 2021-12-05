@@ -59,6 +59,8 @@ user_password = ""
 
 
 '''菜单'''
+me_results = None
+me_col = None
 @app.route('/menu', methods=['POST', 'GET'])
 def menu():
     global user_name, user_password
@@ -150,6 +152,21 @@ def meAdd():
     sql = "insert into me(菜名,份数,价格) values(" + "'" + name + "'," + num + "," + str(0) + ")"
     cur.execute(sql)
     return redirect(url_for('meUpd'))
+
+
+
+
+
+'''提交'''
+@app.route('/submit', methods=['POST', 'GET'])
+def submit():
+    global me_results, me_col
+    s = 0
+    for row in me_results:
+        s += row[2]
+    return render_template('submit.html', me_res=me_results, me_cols = me_col,
+                                          sum=s)
+
 
 
 

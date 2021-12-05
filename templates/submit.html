@@ -1,0 +1,100 @@
+<html>
+<head>
+    <title>修改页面</title>
+    <style>
+        td, th {
+            white-space: nowrap;
+            width: 70px;
+            height: 35px;
+            text-align: center;
+            font-family:monospace;
+            font-size: 20px;
+        }
+        body{
+            margin: 0px;
+            padding: 0px;
+        }
+        #bg{
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            z-index: -999;
+            position: absolute;
+        }
+        .myfont{
+            font-family:monospace;
+            font-size:19px;
+            font-style: normal;
+            font-weight: 600;
+            color: rgb(97, 46, 46);
+        }
+        .checkadd{
+            font-family:monospace;
+            font-size:22px;
+            font-style: normal;
+            font-weight: 600;
+            color: rgb(0, 0, 0);
+            background: #ffffff;
+            border-color: #b4b4b4
+        }
+        .textStyle{
+            width: 60%;
+            height: 5%;
+            margin: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+<img id="bg" src="../../static/pictures/order.png"/>
+<form action="/menu"
+      style="border-color:#ccebff; margin-left:12%; margin-top:3%;
+             margin-right:55%; margin-bottom:0%;
+             background-image:url('../../static/pictures/123.png');
+             background-size:100% 100%">
+
+    <div style="margin-left:0%; margin-right:0% ;margin-top:0%;">
+        <table id="myTable" width=100% border="0">
+            <p>&nbsp</p><p>&nbsp</p>
+        <tr>
+            {% for col in me_cols %}
+            <th>{{col}}</th>
+            {% endfor %}
+        </tr>
+        {% for row in me_res %}
+        <tr>
+            {% for element in row %}
+            <td>{{element}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+        <tr><td></td>
+        <td>总价：</td>
+        <td>{{sum}}</td></tr>
+        </table>
+    </div>
+
+
+
+    <p style="text-align:center; margin-top:10%" class="myfont">请填写以下信息</p>
+    <p style="margin-left:10%" class="myfont">地址：
+    <input type="text" name="name" placeholder="请输入地址" class="textStyle" required></p>
+    <p style="margin-left:10%" class="myfont">备注：
+    <input type="text" name="num" placeholder="请输入备注" class="textStyle"></p>
+
+    <table style="margin-left: 17%;margin-top: 11%;">
+        <tr style="text-align: center;">
+            <td><input type="submit" value="确认" class="checkadd"></td></tr>
+        <tr><td>&nbsp</td></tr>
+        <tr style="text-align: center;">
+            <td><input type="button" value="返回" class="checkadd"
+                       onclick="window.location.href='/menu'"></td>
+        </tr>
+    </table>
+    <p>&nbsp</p><p>&nbsp</p>
+</form>
+
+</body>
+</html>

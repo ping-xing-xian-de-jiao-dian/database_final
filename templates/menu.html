@@ -57,19 +57,23 @@ a.myfont{
 <body>
 <img id="bg" src="../static/pictures/order.png"/>
 
+<!--我的订单-->
 <div style="HEIGHT: 0%; POSITION: absolute; WIDTH: 100%">
-<form style="margin-left:58%; margin-right:0%; margin-top:2%;">
+
+<form action="/submit" method="post"
+      style="margin-left:58%; margin-right:0%; margin-top:2%;">
 <input type="button" value="清空"
        onclick="window.location.href='/meReset'" class="buttonStyle">
 <input type="button" value="加一份快餐"
        onclick="window.location.href='/meFastAdd'" class="buttonStyle">
 <input type="button" value="折扣商品"
    onclick="window.location.href='/meDis'" class="buttonStyle">
-<!--<input type="button" value="更新价格"-->
-   <!--onclick="window.location.href='/meUpd'" class="buttonStyle">-->
 <input type="button" value="老板，加菜！"
    onclick="window.location.href='/meAddForm'" class="buttonStyle">
+
+
 </form>
+
 <table id="myTable" width=40% border="6"
        style="background:#fff3c2; border-color:#ccebff; margin-left:55%; margin-right:70% ;margin-top:3%">
     <tr>
@@ -101,9 +105,20 @@ a.myfont{
     <td>总价：</td>
     <td>{{sum}}</td></tr>
 </table>
+
+
+<!--提交按钮-->
+<input type="submit" value="提交订单" class="buttonStyle"
+       style="margin-left:86%; margin-top:2%;
+              background:rgb(10,185,10); color:rgb(235,255,235);
+              width:10%; height:40px"
+       onclick="window.location.href='/submit'">
+
 </div>
 
 
+
+<!--菜单-->
 <div style="HEIGHT: 0%; POSITION: absolute; WIDTH: 100%">
 <form action="/menuSel" method="post"
       style="margin-left:10%; margin-right:50%; margin-top:2%;">
