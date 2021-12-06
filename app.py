@@ -157,7 +157,7 @@ def meAdd():
 
 
 
-'''提交'''
+'''提交界面'''
 @app.route('/submit', methods=['POST', 'GET'])
 def submit():
     global me_results, me_col
@@ -168,8 +168,15 @@ def submit():
                                           sum=s)
 
 
+'''订单配送界面'''
+@app.route('/transmit')
+def transmit():
+    return render_template('transmit.html')
 
-
+'''配送完成界面'''
+@app.route('/complete')
+def complete():
+    return render_template('complete.html')
 
 
 
